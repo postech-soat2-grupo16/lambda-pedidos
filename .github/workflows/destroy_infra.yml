@@ -1,4 +1,4 @@
-name: Destroy Lambda Authorization
+name: Destroy Lambda Pedidos
 
 on:
   workflow_dispatch:
