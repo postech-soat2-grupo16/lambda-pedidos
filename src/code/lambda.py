@@ -1,10 +1,8 @@
 import json
 import requests
-
+import os
 
 def main(event, context):
-    print("Received event: " + json.dumps(event, indent=2))
-
     for record in event['Records']:
         message_body = json.loads(record['body'])
         process_sqs_message(message_body)
