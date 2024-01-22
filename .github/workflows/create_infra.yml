@@ -1,4 +1,4 @@
-name: Deploy Lambda Authorization
+name: Deploy Lambda Pedidos
 
 on:
   workflow_dispatch:
