@@ -55,7 +55,7 @@ resource "aws_lambda_function" "lambda_pedidos" {
   filename         = data.archive_file.code.output_path
   source_code_hash = data.archive_file.code.output_base64sha256
   role             = var.lambda_execution_role
-  timeout          = 120
+  timeout          = 30
   description      = "Lamda para Fila de Pedidos"
 
   vpc_config {
@@ -80,6 +80,5 @@ resource "aws_lambda_event_source_mapping" "pedidos_sqs_trigger" {
   event_source_arn  = var.sqs_arn
   function_name     = aws_lambda_function.lambda_pedidos.arn
   enabled           = true
-  batch_size        = 10
-  starting_position = "LATEST"
+  batch_size        = 1
 }

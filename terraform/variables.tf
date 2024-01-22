@@ -12,17 +12,17 @@ variable "lambda_execution_role" {
 
 variable "vpc_id" {
   type    = string
-  default = ""
+  default = "vpc-02704242632eb2597"
 }
 
 variable "subnet_a" {
   type    = string
-  default = ""
+  default = "subnet-0c485509fe2864438"
 }
 
 variable "subnet_b" {
   type    = string
-  default = ""
+  default = "subnet-000064d84790b3f77"
 }
 
 variable "url_base" {
@@ -36,4 +36,3 @@ variable "sqs_arn" {
   sensitive = true
   default   = ""
 }
-
