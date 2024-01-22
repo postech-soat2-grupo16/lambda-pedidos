@@ -15,12 +15,16 @@ def process_sqs_message(message_body):
     print("Body:", message_body)
 
 def notify_payments(body):
-    url = os.environ('URL_BASE')
     order_id = body['order_id']
+    url_base = os.environ['URL_BASE']
+    endpoint = os.environ['ENDPOINT'].replace("id", order_id)
+    url = url_base + '/' + endpoint
+
     try:
         response = requests.get(url)
 
-        if response.status_code == 201:
+        if response.status_code == 200:
+            print('Response BODY: ', response.body)
             return {
                 'statusCode': 200,
                 'body': json.dumps('Pedido {order_id} Message processed successfully!')
