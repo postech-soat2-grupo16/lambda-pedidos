@@ -34,6 +34,7 @@ def notify_payments(body):
                 'body': json.dumps('Pedido {order_id} Message Error!')
             }
     except Exception as e:
+        print('Exception error: ', e)
         return {
             'statusCode': 500,
             'body': json.dumps('Pedido {order_id} Message Exception Error!')
