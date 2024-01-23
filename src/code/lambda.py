@@ -23,7 +23,8 @@ def notify_payments(body):
     print('REQUEST URL: ', url)
 
     try:
-        response = requests.get(url, data=json.dumps(body), headers={'Content-Type': 'application/json'})
+        #response = requests.get(url, data=json.dumps(body), headers={'Content-Type': 'application/json'})
+        response = requests.get(url)
         print('Response: ', response.json())
 
         if response.status_code == 200:
