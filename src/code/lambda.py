@@ -18,12 +18,12 @@ def notify_payments(body):
     endpoint = os.environ['ENDPOINT'].replace("id", order_id)
     url = url_base + '/' + endpoint
     print('REQUEST URL: ', url)
-    
+
     try:
         response = requests.get(url)
+        print('Response: ', json.dumps(response))
 
         if response.status_code == 200:
-            print('Response BODY: ', response.body)
             return {
                 'statusCode': 200,
                 'body': json.dumps('Pedido {order_id} Message processed successfully!')
