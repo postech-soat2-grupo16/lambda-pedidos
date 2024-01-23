@@ -67,7 +67,7 @@ resource "aws_lambda_function" "lambda_pedidos" {
     variables = {
       "URL_BASE" = var.url_base
       "ENDPOINT" = "orders/id"
-      "PORT"     = "8080"
+      "PORT"     = "8000"
     }
   }
 
