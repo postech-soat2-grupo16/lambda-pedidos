@@ -17,7 +17,8 @@ def notify_payments(body):
     url_base = os.environ['URL_BASE']
     endpoint = os.environ['ENDPOINT'].replace("id", order_id)
     url = url_base + '/' + endpoint
-
+    print('REQUEST URL: ', url)
+    
     try:
         response = requests.get(url)
 
