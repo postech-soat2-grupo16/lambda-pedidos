@@ -17,13 +17,13 @@ def notify_payments(body):
 
     url_base = os.environ['URL_BASE']
     port = os.environ['PORT']
-    endpoint = os.environ['ENDPOINT'].replace("id", order_id)
+    endpoint = os.environ['ENDPOINT'].replace('id_pedidos', order_id)
 
     url = url_base + ':' + port +  '/' + endpoint
     print('REQUEST URL: ', url)
 
     try:
-        response = requests.get(url)
+        response = requests.get(url, data=json.dumps(body), headers={'Content-Type': 'application/json'})
         print('Response: ', response.json())
 
         if response.status_code == 200:
