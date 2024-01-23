@@ -36,3 +36,9 @@ variable "sqs_arn" {
   sensitive = true
   default   = ""
 }
+
+variable "security_group_alb" {
+  type      = string
+  sensitive = true
+  default   = ""
+}
