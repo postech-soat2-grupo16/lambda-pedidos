@@ -67,10 +67,11 @@ resource "aws_lambda_function" "lambda_pedidos" {
     variables = {
       "URL_BASE" = var.url_base
       "ENDPOINT" = "orders/id"
+      "PORT"     = "8080"
     }
   }
 
-    tags = {
+  tags = {
     infra   = "lambda"
     service = "pedidos"
   }
@@ -78,8 +79,8 @@ resource "aws_lambda_function" "lambda_pedidos" {
 
 #Trigger SQS
 resource "aws_lambda_event_source_mapping" "pedidos_sqs_trigger" {
-  event_source_arn  = var.sqs_arn
-  function_name     = aws_lambda_function.lambda_pedidos.arn
-  enabled           = true
-  batch_size        = 1
+  event_source_arn = var.sqs_arn
+  function_name    = aws_lambda_function.lambda_pedidos.arn
+  enabled          = true
+  batch_size       = 1
 }

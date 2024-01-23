@@ -14,14 +14,17 @@ def process_sqs_message(message_body):
 
 def notify_payments(body):
     order_id = body['order_id']
+
     url_base = os.environ['URL_BASE']
+    port = os.environ['PORT']
     endpoint = os.environ['ENDPOINT'].replace("id", order_id)
-    url = url_base + '/' + endpoint
+
+    url = url_base + ':' + port +  '/' + endpoint
     print('REQUEST URL: ', url)
 
     try:
         response = requests.get(url)
-        print('Response: ', json.dumps(response))
+        print('Response: ', response.json())
 
         if response.status_code == 200:
             return {
