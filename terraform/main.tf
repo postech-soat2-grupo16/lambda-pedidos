@@ -66,8 +66,8 @@ resource "aws_lambda_function" "lambda_pedidos" {
   environment {
     variables = {
       "URL_BASE" = var.url_base
-      #"ENDPOINT" = /pagamentos/id_pedidos/qr-code
-      "ENDPOINT" = "pagamentos/health"
+      "ENDPOINT" = "/pagamentos/id_pedidos/qr-code"
+      #"ENDPOINT" = "pagamentos/order"
       "PORT"     = "8000"
     }
   }
