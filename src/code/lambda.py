@@ -23,24 +23,25 @@ def notify_payments(body):
     print('REQUEST URL: ', url)
 
     try:
-        response = requests.get(url, data=json.dumps(body), headers={'Content-Type': 'application/json'})
-        #response = requests.get(url, headers={'Content-Type': 'application/json'})
-        print('Response: ', response.json())
+        response = requests.get(url)
+        print('Response: ', response)
 
         if response.status_code > 199 and response.status_code < 300:
-            print('Pagamento Criado com sucesso!')
             return {
                 'statusCode': response.status_code,
-                'body': json.dumps('Pedido {order_id} Message processed successfully!')
+                'message': 'Pagamento Criado com sucesso!',
+                'body': body
             }
         else:
             return {
                 'statusCode': response.status_code,
-                'body': json.dumps('Pedido {order_id} Message Error!')
+                'message': 'Erro ao criar pagamento',
+                'body': body
             }
     except Exception as e:
         print('Exception error: ', e)
         return {
             'statusCode': 500,
-            'body': json.dumps('Pedido {order_id} Message Exception Error!')
+            'message': 'Exception error!',
+            'body': body
         }
