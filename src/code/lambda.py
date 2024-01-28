@@ -24,7 +24,7 @@ def notify_payments(body):
 
     try:
         response = requests.get(url)
-        print('Response: ', response)
+        print('Response: ', response.text)
 
         if response.status_code > 199 and response.status_code < 300:
             return {
